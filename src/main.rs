@@ -14,7 +14,9 @@ enum MathFunctionLabel {
 fn parse_args() -> MathFunctionLabel {
     let matches = App::new("pipemath")
         .about(
-            "Takes all input from stdin and applies a statistical function
+            "Run math functions on numbers from stdin.
+
+Takes all input from stdin and applies a statistical function
 It ignores invalid input.",
         )
         .version(crate_version!())
@@ -41,7 +43,7 @@ fn main() {
     let stdin = io::stdin();
     for line in stdin.lock().lines() {
         match line {
-            Err(_) => break, // with ^Z
+            Err(e) => eprintln!("ERROR reading stdin: {}", e), // with ^Z
             Ok(s) => match s.as_str().parse() {
                 Err(e) => eprintln!("ERROR cannot parse '{}': {}", s, e),
                 Ok(f) => nums.push(f),
