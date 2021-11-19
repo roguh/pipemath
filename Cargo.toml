@@ -1,0 +1,8 @@
+[package]
+name = "pipemath"
+version = "0.1.1"
+authors = ["Hugo O. Rivera <hugo@roguh.com>"]
+edition = "2021"
+
+[dependencies]
+clap = "2.33.3"
